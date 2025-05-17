@@ -1,0 +1,47 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon",
+        "build": "tsc && cp -r src/utils/email/templates build/utils/email/templates",
+        "seed": "npx ts-node prisma/seed.ts",
+        "serve": "node ./build/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@prisma/client": "^6.8.2",
+        "@typescript-eslint/eslint-plugin": "^8.32.1",
+        "@typescript-eslint/parser": "^8.32.1",
+        "bcryptjs": "^3.0.2",
+        "dayjs": "^1.11.13",
+        "dotenv": "^16.5.0",
+        "eslint": "^9.27.0",
+        "eslint-config-prettier": "^10.1.5",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-module-resolver": "^1.5.0",
+        "eslint-plugin-prettier": "^5.4.0",
+        "express": "^5.1.0",
+        "joi": "^17.13.3",
+        "jsonwebtoken": "^9.0.2",
+        "nodemon": "^3.1.10",
+        "pg": "^8.16.0",
+        "prettier": "^3.5.3",
+        "prisma": "^6.8.2",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.6",
+        "@types/express": "^5.0.2",
+        "@types/jsonwebtoken": "^9.0.9",
+        "@types/node": "^22.15.18",
+        "@types/swagger-jsdoc": "^6.0.4",
+        "@types/swagger-ui-express": "^4.1.8",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    }
+}

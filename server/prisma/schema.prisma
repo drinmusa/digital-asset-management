@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String
+  password String
+  role     Role
+  assets   Asset[]
+
+  @@map("user")
+}
+
+model Asset {
+  id           Int        @id @default(autoincrement())
+  name         String
+  category     String
+  purchaseDate DateTime
+  value        Float
+  createdAt    DateTime   @default(now())
+  userId       Int
+  user         User       @relation(fields: [userId], references: [id])
+  Warranty     Warranty[]
+
+  @@map("asset")
+}
+
+model Warranty {
+  id           Int      @id @default(autoincrement())
+  asset        Asset    @relation(fields: [assetId], references: [id])
+  assetId      Int      @unique
+  quoteAmount  Float
+  providerName String
+  validUntil   DateTime
+  createdAt    DateTime @default(now())
+
+  @@map("warranty")
+}
