@@ -51,3 +51,10 @@ npx prisma generate
 Run seed
 npm run seed
 ```
+
+3. **Start application**
+
+```bash
+Start application
+npm run start
+```

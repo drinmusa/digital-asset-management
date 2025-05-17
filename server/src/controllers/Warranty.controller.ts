@@ -5,11 +5,13 @@ import { WarrantyService } from '../services/Warranty.service';
 import { authMiddleware } from '../middleware/Authentication.middleware';
 import { IdValidator } from '../validators/Id.validator';
 import { PaginationValidator } from '../validators/Pagination.validator';
+import { accessMiddleware } from '../middleware/Access.middleware';
 
 export const WarrantyController: Router = Router();
 WarrantyController.get(
     '/',
     authMiddleware,
+    accessMiddleware('ADMIN'),
     ValidationMiddleware(PaginationValidator, {}, (req: Request) => req.query),
     async (req: Request, res: Response, next: NextFunction) => {
         try {

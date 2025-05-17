@@ -13,3 +13,10 @@ Currently, two official plugins are available:
 Create a .env file in the root of the client folder with:
 VITE_API_URL="backend-url"
 ```
+
+**Start application**
+
+```bash
+Start application
+npm run dev
+```
